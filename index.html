@@ -105,12 +105,16 @@
             font-size: 50px;
             z-index: 999;
             border-radius: 40px;
-            line-height: 80px;
+            /* line-height: 80px; */
             border: 1px solid white;
             opacity: 0.3;
             transition: all .3s ease;
             background-color: gray;
             color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
         }
 
         button:hover {
@@ -137,6 +141,7 @@
             position: fixed;
             right: 50px;
             top: 50vh;
+            
         }
 
         .update {
@@ -155,8 +160,9 @@
     <div class="container">
         <div class="topnav">
             <div class="title">AI HENTAI</div>
-            <button class="goback">←</button>
-            <button class="changepage">→</button>
+            <button class="changepage">&lsaquo;</button>
+            <button class="goback">&rsaquo;</button>
+            
 
         </div>
         <div class="contentbox">
@@ -164,13 +170,13 @@
                 <ul class="content_range"></ul>
             </div>
         </div>
-        <div class="update">Update time: 2023 / 10 / 23 0:00</div>
+        <div class="update">Update time: 2023 / 10 / 24 0:00</div>
     </div>
 
     <script>
         const photorange = document.querySelector('.content_range')
         const photourl = document.querySelectorAll('.photobox')
-        const maxphotocount = 45
+        const maxphotocount = 103
         let count = 10
         const render = () => {
             for (let i = count; i >= count + 1 - 10; i--) {
