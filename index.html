@@ -14,7 +14,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
 
         html {
-            background-image: url('assets/wallpaperflare.com_wallpaper.jpg');
+            background-image: url('/assets/wallpaperflare.com_wallpaper.jpg');
             background-repeat: repeat;
             background-size: cover;
             height: 100%;
@@ -176,7 +176,7 @@
             for (let i = count; i >= count + 1 - 10; i--) {
                 const li = document.createElement('li');
                 li.className = 'photobox';
-                li.innerHTML = `<img src="AIphoto/${i}.png" alt="">`;
+                li.innerHTML = `<img src="/AIphoto/${i}.png" alt="">`;
                 photorange.appendChild(li);
             }
         }
