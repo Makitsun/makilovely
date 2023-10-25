@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 省略其他標籤 -->
+</head>
+<body>
+    <div class="container">
+        <!-- 在這裡添加通用的 HTML 結構 -->
+        <div class="contentbox">
+            <div class="content_range" id="contentRange"></div>
+        </div>
+        <!-- 其他內容 -->
+    </div>
+
+    <script>
+        // 檢查視窗寬度並生成對應的 HTML 結構
+        function checkWidth() {
+            if (window.innerWidth < 768) {
+                // 手機上的 HTML 結構
+                const contentRange = document.getElementById('contentRange');
+                contentRange.innerHTML = ''; // 清空原有內容
+
+                for (let i = 1; i <= 10; i++) {
+                    const li = document.createElement('li');
+                    li.className = 'photobox';
+                    li.innerHTML = `<img src="AIphoto/${i}.png" alt="">`;
+                    contentRange.appendChild(li);
+                }
+            } else {
+                // 其他裝置上的 HTML 結構
+                const contentRange = document.getElementById('contentRange');
+                contentRange.innerHTML = ''; // 清空原有內容
+
+                for (let i = 1; i <= 10; i++) {
+                    const div = document.createElement('div');
+                    div.className = 'photobox';
+                    div.innerHTML = `<img src="AIphoto/${i}.png" alt="">`;
+                    contentRange.appendChild(div);
+                }
+            }
+        }
+
+        // 頁面載入時檢查寬度並生成對應的 HTML 結構
+        checkWidth();
+
+        // 窗口大小改變時重新檢查寬度
+        window.addEventListener('resize', checkWidth);
+    </script>
+</body>
+</html>
