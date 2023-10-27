@@ -7,7 +7,7 @@
     <meta name="juicyads-site-verification" content="5fc60a440427eec9e4b55cca234048a4">
     <title>AI HENTAI</title>
     <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="PCstyle.css">
+    <link rel="stylesheet" media="(min-width: 769px)" href="PCstyle.css">
     <link rel="stylesheet" href="Moblilestyle.css">
 </head>
 
@@ -15,7 +15,7 @@
     <div class="container">
         <div class="topnav">
             <div class="title">AI HENTAI</div>
-            <button class="changepage">&lsaquo;</button>
+            <button class="nextpage">&lsaquo;</button>
             <button class="goback">&rsaquo;</button>
 
 
@@ -59,9 +59,13 @@
     <script>
         const photorange = document.querySelector('.content_range')
         const photourl = document.querySelectorAll('.photobox')
-        const maxphotocount = 264
+
+
+        const maxphotocount = 3
         let count = 10
-        const render = () => {
+        let mb_count = 1
+
+        const PCrender = () => {
             for (let i = count; i >= count + 1 - 10; i--) {
                 const li = document.createElement('li');
                 li.className = 'photobox';
@@ -69,38 +73,92 @@
                 photorange.appendChild(li);
             }
         }
-        render()
 
-        const addcount = () => {
+        const MBrender = () => {
+            const li = document.createElement('li');
+            li.className = 'photobox';
+            li.innerHTML = `<img src="AIphoto/${mb_count}.png" alt="">`;
+            photorange.appendChild(li);
+        }
+
+        if (window.innerWidth > 768) {
+            PCrender()
+        } else if (window.innerWidth <= 768) {
+            MBrender()
+            console.log('小於768喔');
+        }
+
+        // 電腦上下頁
+        const PCaddcount = () => {
             photorange.innerHTML = ''
             if (count + 10 <= maxphotocount) {
                 count = count + 10
-                render()
+                PCrender()
             } else if (count + 10 > maxphotocount) {
                 count = maxphotocount
-                render()
+                PCrender()
             }
 
         }
 
-        const subtract = () => {
+        const PCsubtract = () => {
             photorange.innerHTML = ''
             if (count - 10 < 10) {
                 count = 10
-                render()
+                PCrender()
             } else if (count - 10 >= 0) {
                 count = count - 10
-                render()
+                PCrender()
             } else if (count - 10 <= 0) {
                 count = 10
-                render()
+                PCrender()
             }
 
         }
-        const changepagebt = document.querySelector('.changepage')
-        changepagebt.addEventListener('click', addcount)
+        // 電腦上下頁
+
+        // 手機上下頁
+        const MBaddcount = () => {
+            photorange.innerHTML = ''
+            if (mb_count < maxphotocount) {
+                mb_count++
+                MBrender()
+            } else if (mb_count >= maxphotocount) {
+                MBrender()
+                console.log('到底了');
+            }
+
+        }
+
+        const MBsubtract = () => {
+            photorange.innerHTML = ''
+            if (mb_count > 1) {
+                count--
+                MBrender()
+            } else if (mb_count <= 1) {
+                MBrender()
+                console.log('到1了');
+            }
+        }
+        // 手機上下頁
+        const changepagebt = document.querySelector('.nextpage')
+        changepagebt.addEventListener('click', () => {
+            if (window.innerWidth > 768) {
+                PCaddcount()
+            } else if (window.innerWidth <= 768) {
+                MBaddcount()
+            }
+
+        })
         const goback = document.querySelector('.goback')
-        goback.addEventListener('click', subtract)
+        goback.addEventListener('click', () => {
+            if (window.innerWidth > 768) {
+                PCsubtract()
+            } else if (window.innerWidth <= 768) {
+                MBsubtract()
+            }
+        })
+
 
     </script>
 </body>
